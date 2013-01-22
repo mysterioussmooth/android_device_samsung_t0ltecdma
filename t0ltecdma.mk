@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2012 The CyanogenMod Project
+# Copyright (C) 2012 The LiquidSmooth Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,10 +20,6 @@ LOCAL_PATH := device/samsung/t0ltecdma
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
@@ -60,8 +57,7 @@ PRODUCT_COPY_FILES += \
 
 # Product specific Packages
 PRODUCT_PACKAGES += \
-    GalaxyNote2Settings \
-    SamsungServiceMode
+    GalaxyNote2Settings
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -87,17 +83,14 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 PRODUCT_PACKAGES += \
-    com.android.nfc_extras \
-    Stk
-
-$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
+    com.android.nfc_extras
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.ril_class=SamsungCDMAQualcommRIL \
-    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet_usb0 \
     ro.ril.hsxpa=1 \
-    ro.ril.gprsclass=10
+    ro.ril.gprsclass=10 \
+    ro.telephony.ril_class=SamsungCDMAQualcommRIL \
+    mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet_usb0
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -112,5 +105,4 @@ PRODUCT_COPY_FILES += \
 
 # Include common makefile
 $(call inherit-product, device/samsung/smdk4412-common/common.mk)
-
 $(call inherit-product-if-exists, vendor/samsung/t0ltecdma/t0ltecdma-vendor.mk)
