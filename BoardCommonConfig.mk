@@ -28,13 +28,11 @@ TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.6/bin/arm-eabi-
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/vnd_t0ltecdma.txt
 
-# Audio
-BOARD_USE_SAMSUNG_SEPARATEDSTREAM := true
-BOARD_USES_LIBMEDIA_WITH_AUDIOPARAMETER := true
-COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
-
 # RIL
 COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{ "ril.ks.status", AID_SYSTEM, 0 },'
+
+# Camera
+COMMON_GLOBAL_CFLAGS += -DCAMERA_WITH_CITYID_PARAM
 
 # inherit from the proprietary version
 -include vendor/samsung/t0ltecdma/BoardConfigVendor.mk
