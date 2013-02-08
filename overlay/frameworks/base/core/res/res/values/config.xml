@@ -140,4 +140,7 @@
          animation with the specified delay (in milliseconds), -1 will disable the animation -->
     <integer name="config_screenOnAnimation">-1</integer>
 
+    <!-- Boolean to enable Stylus gestures -->
+    <bool name="config_stylusGestures">true</bool>
+
 </resources>
